@@ -1,7 +1,31 @@
 {
-  "name": "VS Code Portfolio IDE",
-  "description": "A fully functional, VS Code inspired portfolio featuring a tabbed editor system, split-view code/preview modes, and terminal-style interfaces.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
+  "title": "Abdelrhman Mahmoud - Full Stack Developer & Software Engineer",
+  "description": "Experienced Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building innovative solutions and digital experiences.",
+  "keywords": [
+    "Full Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Node.js Developer",
+    "JavaScript Developer",
+    "TypeScript Developer",
+    "Web Developer",
+    "Software Engineer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Portfolio",
+    "Abdelrhman Mahmoud",
+    "Web Development",
+    "Mobile Development",
+    "UI/UX Development"
+  ],
+  "author": "Abdelrhman Mahmoud",
+  "twitter": "@abdelrhman_dev",
+  "image": "/images/og-image.jpg",
+  "url": "https://abdelrhman-mahmoud.vercel.app",
+  "social": {
+    "github": "https://github.com/abdelrahman-mahmoud2025",
+    "linkedin": "https://www.linkedin.com/in/abdelrhmanmahmoud200204",
+    "twitter": "https://twitter.com/abdelrhman_dev",
+    "leetcode": "https://leetcode.com/abdelrhman-mahmoud"
+  }
 }

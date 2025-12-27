@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { portfolioFiles, profile, extensions } from "../data/data";
+import { portfolioFiles, profile, extensions, socialLinks } from "../data/data";
 import { PortfolioFile } from "../types/types";
 
 interface SidebarProps {
@@ -410,24 +410,46 @@ const AccountView: React.FC<{ onOpenFile: (f: PortfolioFile) => void }> = ({
         </button>
 
         <div className="pt-4 border-t border-white/5 grid grid-cols-2 gap-2">
-          <a
-            href="https://github.com/abdelrahman-mahmoud2025"
-            target="_blank"
-            className="flex flex-col items-center gap-2 p-3 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white rounded-lg transition-all border border-white/5 no-underline"
-          >
-            <span className="material-symbols-outlined text-lg">code</span>
-            <span className="text-[10px] font-bold uppercase">GitHub</span>
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            className="flex flex-col items-center gap-2 p-3 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white rounded-lg transition-all border border-white/5 no-underline"
-          >
-            <span className="material-symbols-outlined text-lg text-blue-400">
-              link
-            </span>
-            <span className="text-[10px] font-bold uppercase">LinkedIn</span>
-          </a>
+          {socialLinks.map((link) => {
+            // Map icon names to Material Icons
+            const iconMap: Record<string, string> = {
+              github: "code",
+              linkedin: "link",
+              twitter: "tag",
+              telegram: "send",
+              leetcode: "terminal",
+            };
+
+            // Map icon colors
+            const colorMap: Record<string, string> = {
+              github: "text-white",
+              linkedin: "text-blue-400",
+              twitter: "text-sky-400",
+              telegram: "text-cyan-400",
+              leetcode: "text-orange-400",
+            };
+
+            return (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-2 p-3 bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white rounded-lg transition-all border border-white/5 no-underline"
+              >
+                <span
+                  className={`material-symbols-outlined text-lg ${
+                    colorMap[link.icon] || "text-white"
+                  }`}
+                >
+                  {iconMap[link.icon] || "link"}
+                </span>
+                <span className="text-[10px] font-bold uppercase">
+                  {link.name}
+                </span>
+              </a>
+            );
+          })}
         </div>
 
         <a

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
   vscDarkPlus,
@@ -23,6 +23,8 @@ const CodeView: React.FC<CodeViewProps> = ({
   const [localCode, setLocalCode] = useState<string>(
     typeof code === "string" ? code : ""
   );
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const highlighterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setLocalCode(typeof code === "string" ? code : "");
@@ -76,36 +78,55 @@ const CodeView: React.FC<CodeViewProps> = ({
     onUpdate(val);
   };
 
+  // Sync scroll between textarea and syntax highlighter
+  const handleScroll = () => {
+    if (textareaRef.current && highlighterRef.current) {
+      highlighterRef.current.scrollTop = textareaRef.current.scrollTop;
+      highlighterRef.current.scrollLeft = textareaRef.current.scrollLeft;
+    }
+  };
+
   const currentStyle = getThemeStyle(settings.theme);
 
   return (
-    <div
-      className="relative w-full h-full flex flex-col font-mono overflow-hidden group"
-      style={{ fontSize: `${settings.fontSize}px` }}
-    >
-      <div className="flex-1 overflow-auto custom-scrollbar bg-[#0f1117] h-full relative">
+    <>
+      <style>
+        {`
+          textarea::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      </style>
+      <div
+        className="relative w-full h-full flex flex-col font-mono overflow-hidden group"
+        style={{ fontSize: `${settings.fontSize}px` }}
+      >
+      <div className="flex-1 overflow-hidden custom-scrollbar bg-[#0f1117] h-full relative">
         {/* Transparent Textarea Overlay for Input */}
         <textarea
+          ref={textareaRef}
           className={`
-            absolute inset-0 w-full h-full p-4 pl-14 bg-transparent outline-none resize-none text-transparent caret-primary font-mono leading-relaxed z-10
-            ${
-              settings.lineWrap
-                ? "whitespace-pre-wrap"
-                : "whitespace-pre overflow-auto"
-            }
+            absolute inset-0 w-full h-full p-4 pl-14 bg-transparent outline-none resize-none text-transparent caret-primary font-mono leading-relaxed z-10 overflow-auto
+            ${settings.lineWrap ? "whitespace-pre-wrap" : "whitespace-pre"}
           `}
           value={localCode}
           onChange={handleChange}
+          onScroll={handleScroll}
           spellCheck={false}
           autoFocus
           style={{
             fontSize: `${settings.fontSize}px`,
             lineHeight: "1.5",
+            scrollbarWidth: "none", // Firefox
+            msOverflowStyle: "none", // IE/Edge
           }}
         />
 
         {/* Highlighted Background */}
-        <div className="pointer-events-none h-full overflow-hidden">
+        <div
+          ref={highlighterRef}
+          className="pointer-events-none h-full overflow-hidden"
+        >
           <SyntaxHighlighter
             language={getLang(type)}
             style={currentStyle}
@@ -145,6 +166,7 @@ const CodeView: React.FC<CodeViewProps> = ({
         )}
       </div>
     </div>
+    </>
   );
 };
 
