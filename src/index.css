@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #62a6f8;
+  --color-background-light: #f5f7f8;
+  --color-background-dark: #050505;
+  --color-editor-bg: #0f131a;
+  --color-sidebar-bg: #111418;
+  --color-activity-bg: #0d1014;
+  --color-border-color: #2b323b;
+  --color-terminal-bg: #0d1117;
+  
+  --font-family-display: Inter, sans-serif;
+  --font-family-mono: "Fira Code", monospace;
+}

@@ -1,0 +1,7 @@
+{
+  "name": "VS Code Portfolio IDE",
+  "description": "A fully functional, VS Code inspired portfolio featuring a tabbed editor system, split-view code/preview modes, and terminal-style interfaces.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
