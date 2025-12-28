@@ -104,7 +104,7 @@ export const projects: Project[] = [
     title: "Code2Z — E‑learning Platform (PWA)",
     description: "100% Arabic educational platform making programming accessible to all ages. SPA with offline PWA features, SEO‑optimized, and an engaging UI/UX. Built with React.js and PHP/Laravel RESTful API.",
     tags: ["React.js", "PWA", "SEO", "PHP", "Laravel", "MySQL", "Firebase", "Tailwind"],
-    image: "./img/code2z.png",
+    image: "./img/code2z.webp",
     liveUrl: "https://code2z.netlify.app",
     sourceUrl: "#"
   },
@@ -128,7 +128,7 @@ export const projects: Project[] = [
     title: "API for Drilling Services — Corporate Website",
     description: "Corporate site built with PHP + Tailwind. Portfolio/projects, services, testimonials, careers, and certifications with a crisp, mobile‑friendly design.",
     tags: ["PHP", "Tailwind CSS", "Corporate"],
-    image: "./img/API-DS.png",
+    image: "./img/API-DS.webp",
     liveUrl: "https://api-eg.net",
     sourceUrl: "#"
   },
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     title: "C2Z-MS — Code2Z Management System",
     description: "An integrated internal management system (Mini-ERP) designed to centralize and automate core operational and administrative tasks for Code2Z. The system covers Project Management (PM), Human Resources (HR), and Financial Management (FM), ensuring data-driven decision-making and enhancing the efficiency of administrative and technical teams.",
     tags: ["Laravel", "PHP", "React.js", "Tailwind CSS", "Chart.js", "MySQL"],
-    image: "./img/C2Z-MS.png",
+    image: "./img/C2Z-MS.webp",
     liveUrl: "https://c2z-ms.xo.je/",
     sourceUrl: "#"
   },
@@ -144,7 +144,7 @@ export const projects: Project[] = [
     title: "Weather App",
     description: "A weather app built with React.js and Tailwind CSS. The app provides real-time weather updates and forecasts for any location in the world.",
     tags: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS", "Weather API"],
-    image: "./img/weatherApp.png",
+    image: "./img/weatherApp.webp",
     liveUrl: "https://abdelrahman-mahmoud2025.github.io/whether-app/",
     sourceUrl: "https://github.com/abdelrahman-mahmoud2025/whether-app/"
   },
@@ -152,7 +152,7 @@ export const projects: Project[] = [
     title: "Age Calculator",
     description: "Age Calculator built with HTML5, CSS3, and JavaScript.",
     tags: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS"],
-    image: "./img/Age-Calculator.png",
+    image: "./img/Age-Calculator.webp",
     liveUrl: "https://code2z-age-calculator.netlify.app/",
     sourceUrl: "https://github.com/abdelrahman-mahmoud2025/age-calc"
   },
@@ -160,7 +160,7 @@ export const projects: Project[] = [
     title: "Image Editor",
     description: "Image Editor built with HTML5, CSS3, and JavaScript.",
     tags: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS"],
-    image: "./img/Image-Editor.png",
+    image: "./img/Image-Editor.webp",
     liveUrl: "https://code2z-image-editor.netlify.app/",
     sourceUrl: "https://github.com/abdelrahman-mahmoud2025/Image-Editor"
   },
