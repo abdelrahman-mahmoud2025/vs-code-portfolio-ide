@@ -31,6 +31,17 @@ const StatusBar: React.FC<StatusBarProps> = ({ activeTab, fileContents }) => {
           <span className="material-symbols-outlined text-[14px]">warning</span>
           <span>0</span>
         </div>
+        <a
+          href="https://abdelrhman-mahmoud.netlify.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 hover:bg-black/10 px-2 h-full transition-colors rounded-sm group"
+        >
+          <span className="material-symbols-outlined text-[14px] group-hover:scale-110 transition-transform">
+            copyright
+          </span>
+          <span className="hidden md:inline">2025 Abdelrahman</span>
+        </a>
       </div>
 
       <div className="flex items-center gap-1 h-full">
