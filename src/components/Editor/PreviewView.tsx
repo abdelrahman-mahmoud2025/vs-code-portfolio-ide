@@ -1,12 +1,13 @@
-import React from "react";
-import HomePreview from "../../pages/HomePreview";
-import SkillsPreview from "../../pages/SkillsPreview";
-import ProjectsPreview from "../../pages/ProjectsPreview";
-import ExperiencePreview from "../../pages/ExperiencePreview";
-import EducationPreview from "../../pages/EducationPreview";
-import ContactPreview from "../../pages/ContactPreview";
-import ArticlesPreview from "../../pages/ArticlesPreview";
+import React, { Suspense, lazy } from "react";
 import { PortfolioFile } from "../../types/types";
+
+const HomePreview = lazy(() => import("../../pages/HomePreview"));
+const SkillsPreview = lazy(() => import("../../pages/SkillsPreview"));
+const ProjectsPreview = lazy(() => import("../../pages/ProjectsPreview"));
+const ExperiencePreview = lazy(() => import("../../pages/ExperiencePreview"));
+const EducationPreview = lazy(() => import("../../pages/EducationPreview"));
+const ContactPreview = lazy(() => import("../../pages/ContactPreview"));
+const ArticlesPreview = lazy(() => import("../../pages/ArticlesPreview"));
 
 interface PreviewViewProps {
   fileId: string;
@@ -19,6 +20,14 @@ const PreviewView: React.FC<PreviewViewProps> = ({
   fileContents,
   onOpenFile,
 }) => {
+  const previewFallback = (
+    <div className="w-full max-w-3xl space-y-3 animate-pulse">
+      <div className="h-10 w-2/5 bg-white/10 rounded-lg"></div>
+      <div className="h-28 w-full bg-white/5 rounded-xl"></div>
+      <div className="h-28 w-full bg-white/5 rounded-xl"></div>
+    </div>
+  );
+
   const renderPreview = () => {
     // Note: We currently don't re-parse complex JSON for the preview live,
     // but the structure allows for future enhancements.
@@ -65,7 +74,7 @@ const PreviewView: React.FC<PreviewViewProps> = ({
       </div>
 
       <div className="relative z-10 p-4 md:p-10 flex flex-col items-center">
-        {renderPreview()}
+        <Suspense fallback={previewFallback}>{renderPreview()}</Suspense>
       </div>
     </div>
   );

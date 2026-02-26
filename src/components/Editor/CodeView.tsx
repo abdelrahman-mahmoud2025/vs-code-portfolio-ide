@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
   vscDarkPlus,
+  oneDark,
   dracula,
-  ghcolors,
-  solarizedlight,
+  coldarkDark,
+  solarizedDarkAtom,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 interface CodeViewProps {
@@ -54,10 +55,10 @@ const CodeView: React.FC<CodeViewProps> = ({
    * This ensures we always pass a valid style object to react-syntax-highlighter
    */
   const getThemeStyle = (themeName: string) => {
-    const safeVsc = vscDarkPlus || {};
-    const safeDracula = dracula || safeVsc;
-    const safeGitHub = ghcolors || safeVsc;
-    const safeSolarized = solarizedlight || safeVsc;
+    const safeDefault = vscDarkPlus || oneDark || {};
+    const safeDracula = dracula || safeDefault;
+    const safeGitHub = coldarkDark || safeDefault;
+    const safeSolarized = solarizedDarkAtom || safeDefault;
 
     switch (themeName) {
       case "Dracula":
@@ -68,7 +69,7 @@ const CodeView: React.FC<CodeViewProps> = ({
         return safeSolarized;
       case "One Dark Pro":
       default:
-        return safeVsc;
+        return safeDefault;
     }
   };
 
@@ -101,7 +102,7 @@ const CodeView: React.FC<CodeViewProps> = ({
         className="relative w-full h-full flex flex-col font-mono overflow-hidden group"
         style={{ fontSize: `${settings.fontSize}px` }}
       >
-      <div className="flex-1 overflow-hidden custom-scrollbar bg-[#0f1117] h-full relative">
+      <div className="flex-1 overflow-hidden custom-scrollbar bg-editor-bg h-full relative">
         {/* Transparent Textarea Overlay for Input */}
         <textarea
           ref={textareaRef}
@@ -130,7 +131,7 @@ const CodeView: React.FC<CodeViewProps> = ({
           <SyntaxHighlighter
             language={getLang(type)}
             style={currentStyle}
-            showLineNumbers={true} // Line numbers enabled by default
+            showLineNumbers={true}
             wrapLines={settings.lineWrap}
             lineNumberStyle={{
               minWidth: "3.5em",

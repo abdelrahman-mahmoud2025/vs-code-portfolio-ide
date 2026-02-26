@@ -66,7 +66,7 @@ const EditorArea: React.FC<EditorAreaProps> = ({
       {/* Breadcrumbs */}
       <div className="hidden md:flex items-center px-4 h-9 text-xs text-slate-500 border-b border-border-color gap-1 bg-editor-bg shrink-0">
         <span className="hover:text-slate-300 cursor-pointer">
-          portfolio-v3
+          portfolio-v4
         </span>
         <span className="material-symbols-outlined text-[10px]">
           chevron_right
@@ -79,22 +79,6 @@ const EditorArea: React.FC<EditorAreaProps> = ({
           </span>
           {activeTab.path}
         </span>
-        <div className="ml-auto flex items-center gap-4">
-          <div className="flex gap-2 opacity-50 hover:opacity-100 transition-opacity">
-            <span
-              className="material-symbols-outlined text-lg cursor-pointer hover:bg-white/10 rounded"
-              title="Split Screen"
-            >
-              splitscreen
-            </span>
-            <span
-              className="material-symbols-outlined text-lg cursor-pointer hover:bg-white/10 rounded"
-              title="More"
-            >
-              more_horiz
-            </span>
-          </div>
-        </div>
       </div>
 
       {/* Main Content Area */}

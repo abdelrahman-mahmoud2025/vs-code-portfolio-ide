@@ -1,11 +1,11 @@
 
-import { PortfolioFile, Profile, Skill, Project, Experience, Article, Extension } from '../types/types';
+import { PortfolioFile, Profile, Skill, Project, Experience, Article, Extension, ImpactStat } from '../types/types';
 
 export const profile: Profile = {
   name: "Abdelrhman Mahmoud",
-  alias: "Bode",
+  alias: "A-M",
   role: "Full-Stack Developer & Instructor",
-  mission: "Founder of Code2Z | Full-Stack Developer with 5+ years experience",
+  mission: "Founder of Code2Z & Wanas | Full-Stack Developer with 6+ years experience",
   avatar: "./avatar.jpg",
   contact: {
     phone: ["+20 1277697483", "+20 1017155596"],
@@ -13,15 +13,22 @@ export const profile: Profile = {
     website: "https://abdelrhman-mahmoud.netlify.app",
     location: "10th Of Ramadan, Egypt"
   },
-  summary: "Results-oriented Full-Stack Developer with over 5 years of experience building scalable web applications using React.js for high-performance SPAs and PHP/Laravel for stable back-end services. Founder of Code2Z, an Arabic e-learning PWA expanding access to technical education. Strong in database design, SEO, and UI/UX, with extensive experience mentoring teams to real-world results."
+  summary: "Results-oriented Full-Stack Developer with over 6 years of experience building scalable web applications using React.js for high-performance SPAs and PHP/Laravel for stable back-end services. Founder of Code2Z, an Arabic e-learning PWA expanding access to technical education. Strong in database design, SEO, and UI/UX, with extensive experience mentoring teams to real-world results."
 };
+
+export const impactStats: ImpactStat[] = [
+  { label: "Students Trained", value: "500+", hint: "Full-stack web dev" },
+  { label: "Courses Built", value: "5+", hint: "80+ hours content" },
+  { label: "Projects Delivered", value: "15+", hint: "Web & PWA" },
+  { label: "Years Experience", value: "6+", hint: "Frontend & Backend" }
+];
 
 export const socialLinks = [
   { name: 'GitHub', url: 'https://github.com/abdelrahman-mahmoud2025', icon: 'github' },
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/abdelrhmanmahmoud200204', icon: 'linkedin' },
   { name: 'Twitter', url: 'https://x.com/b_pondk', icon: 'twitter' },
   { name: 'Telegram', url: 'https://t.me/Abdelrhman_mahm0ud', icon: 'telegram' },
-  { name: 'LeetCode', url: 'https://leetcode.com/u/abdelrahman-mahmoud2025/', icon: 'code' }
+  { name: 'LeetCode', url: 'https://leetcode.com/u/abdelrahman-mahmoud2025/', icon: 'leetcode' }
 ];
 
 export const extensions: Extension[] = [
@@ -106,7 +113,8 @@ export const projects: Project[] = [
     tags: ["React.js", "PWA", "SEO", "PHP", "Laravel", "MySQL", "Firebase", "Tailwind"],
     image: "./img/code2z.webp",
     liveUrl: "https://code2z.netlify.app",
-    sourceUrl: "#"
+    sourceUrl: "#",
+    featured: true
   },
   {
     title: "Abdelrhman Mahmoud Portfolio",
@@ -114,7 +122,8 @@ export const projects: Project[] = [
     tags: ["React.js", "PWA", "SEO", "PHP", "Laravel", "MySQL", "Firebase", "Tailwind"],
     image: "./img/Abdelrhman-Mahmoud-Portfolio.png",
     liveUrl: "https://abdelrhman-mahmoud.netlify.app/",
-    sourceUrl: "https://github.com/abdelrahman-mahmoud2025/vs-code-portfolio-ide"
+    sourceUrl: "https://github.com/abdelrahman-mahmoud2025/vs-code-portfolio-ide",
+    featured: true
   },
   {
     title: "EDUX — E‑learning Platform & LMS",
@@ -164,7 +173,37 @@ export const projects: Project[] = [
     liveUrl: "https://code2z-image-editor.netlify.app/",
     sourceUrl: "https://github.com/abdelrahman-mahmoud2025/Image-Editor"
   },
+  {
+    title: "Code2Z Store Template",
+    description: "قالب متجر إلكتروني احترافي مصمم للسرعة الفائقة (Lighthouse Score 100). يدعم الـ Multi-language والـ Dark Mode مع نظام State Management مرن يسمح بالتوسع من متجر بسيط إلى منصة متعددة البائعين.",
+    tags: ["React.js", "Tailwind CSS", "PWA", "i18next", "Responsive Design", "Optimization"],
+    image: "./img/store-template.png",
+    liveUrl: "https://code2z-store-template.netlify.app/",
+    sourceUrl: "#",
+    featured: true
+  },
+  {
+    title: "Wanas | وَنَسْ",
+    description: "منصة إسلامية متكاملة تعتمد على معمارية Feature-based Architecture. يضم محرك بحث فائق السرعة يعالج أكثر من 36,000 حديث مع مستكشف تاريخي تفاعلي يغطي 6,000 حدث.",
+    tags: ["TypeScript", "React.js", "GSAP", "Web Workers", "PWA", "Tailwind CSS", "Feature-Driven Design"],
+    image: "./img/wanas.jpeg",
+    liveUrl: "https://wanas-code2z.netlify.app/",
+    sourceUrl: "#",
+    featured: true
+  }
 ];
+
+const preferredProjects = projects.filter((project) => project.featured);
+const topProjectPool = [...preferredProjects, ...projects];
+const seenTopProjectTitles = new Set<string>();
+
+export const topProjects: Project[] = topProjectPool
+  .filter((project) => {
+    if (seenTopProjectTitles.has(project.title)) return false;
+    seenTopProjectTitles.add(project.title);
+    return true;
+  })
+  .slice(0, 4);
 
 export const experience: Experience[] = [
   {
@@ -214,7 +253,7 @@ export const portfolioFiles: PortfolioFile[] = [
     name: 'Home.tsx',
     path: 'src/pages/Home.tsx',
     type: 'tsx',
-    icon: 'Code',
+    icon: 'code',
     iconColor: 'text-primary',
     rawCode: `import React from 'react';\nimport { profile } from '../data';\n\nconst Home = () => {\n  return (\n    <main className="hero">\n      <h1>{profile.name}</h1>\n      <p>{profile.role}</p>\n      <button>View Projects</button>\n    </main>\n  );\n};\n\nexport default Home;`
   },
@@ -225,7 +264,7 @@ export const portfolioFiles: PortfolioFile[] = [
     type: 'json',
     icon: 'data_object',
     iconColor: 'text-yellow-400',
-    rawCode: JSON.stringify({ frontend: skills.frontend, backend: skills.backend, design: skills.design }, null, 2)
+    rawCode: JSON.stringify({ frontend: skills.frontend, backend: skills.backend, tools: skills.tools, softSkills: skills.softSkills, languages: skills.languages }, null, 2)
   },
   {
     id: 'articles',
@@ -270,14 +309,14 @@ export const portfolioFiles: PortfolioFile[] = [
     type: 'sh',
     icon: 'terminal',
     iconColor: 'text-green-400',
-    rawCode: `#!/bin/bash\n\nNAME="Abdelrahman Mahmoud"\nEMAIL="abdelrahman.mahmoud.dev@gmail.com"\nGITHUB="https://github.com/abdelrahman-mahmoud2025"\nLINKEDIN="https://linkedin.com/in/abdelrahman-mahmoud"\necho "Feel free to reach out!"`
+    rawCode: `#!/bin/bash\n\nNAME="Abdelrahman Mahmoud"\nEMAIL="abdelrhman.mahmoud.200204@gmail.com"\nGITHUB="https://github.com/abdelrahman-mahmoud2025"\nLINKEDIN="https://www.linkedin.com/in/abdelrhmanmahmoud200204"\necho "Feel free to reach out!"`
   },
   {
     id: 'css',
     name: 'index.css',
     path: 'src/index.css',
     type: 'css',
-    icon: 'css',
+    icon: 'style',
     iconColor: 'text-blue-400',
     rawCode: `:root {\n  --primary: #62a6f8;\n  --bg: #0f131a;\n}\n\nbody {\n  font-family: 'Inter', sans-serif;\n}`
   }

@@ -539,6 +539,34 @@ const SettingsView: React.FC<{
 
       <div className="space-y-4">
         <h3 className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">
+          Privacy
+        </h3>
+        <div
+          className="flex items-center justify-between p-2.5 bg-white/5 rounded-md cursor-pointer group"
+          onClick={() => onUpdateSettings({ telemetry: !settings.telemetry })}
+        >
+          <div className="pr-2">
+            <span className="text-[11px] text-slate-300 block font-medium group-hover:text-white transition-colors">
+              Usage Telemetry
+            </span>
+            <span className="text-[10px] text-slate-500">
+              Controls local telemetry preference.
+            </span>
+          </div>
+          <div
+            className={`w-9 h-4.5 rounded-full flex items-center px-1 transition-all ${
+              settings.telemetry
+                ? "bg-primary justify-end"
+                : "bg-slate-700 justify-start"
+            }`}
+          >
+            <div className="w-3 h-3 bg-background-dark rounded-full shadow-sm"></div>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h3 className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">
           Theme Selection
         </h3>
         <div className="grid grid-cols-1 gap-1.5">

@@ -18,6 +18,9 @@ interface LayoutProps {
   onUpdateFile: (id: string, content: string) => void;
   settings: any;
   onUpdateSettings: (s: any) => void;
+  onOpenContact: () => void;
+  onSwitchView: () => void;
+  onOpenSearch: () => void;
 }
 
 const Layout: React.FC<LayoutProps> = ({
@@ -33,6 +36,9 @@ const Layout: React.FC<LayoutProps> = ({
   onUpdateFile,
   settings,
   onUpdateSettings,
+  onOpenContact,
+  onSwitchView,
+  onOpenSearch,
 }) => {
   return (
     <div
@@ -59,15 +65,30 @@ const Layout: React.FC<LayoutProps> = ({
           </div>
         </div>
         <div className="flex-1 text-center text-[13px] text-slate-400 font-medium truncate px-4">
-          <span className="opacity-50">portfolio-v3 / src / </span>
+          <span className="opacity-50">portfolio-v4 / src / </span>
           {activeTab.name} — Visual Studio Code
         </div>
-        <div className="w-24 flex justify-end">
+        <div className="w-32 flex justify-end gap-3">
           <span
             className="material-symbols-outlined text-slate-500 text-lg cursor-pointer hover:text-slate-300"
-            onClick={() => onToggleSidebar("search")}
+            onClick={onOpenContact}
+            title="Contact"
+          >
+            mail
+          </span>
+          <span
+            className="material-symbols-outlined text-slate-500 text-lg cursor-pointer hover:text-slate-300"
+            onClick={onOpenSearch}
+            title="Search (/)"
           >
             search
+          </span>
+          <span
+            className="material-symbols-outlined text-slate-500 text-lg cursor-pointer hover:text-slate-300"
+            onClick={onSwitchView}
+            title="Simple View"
+          >
+            view_agenda
           </span>
         </div>
       </div>

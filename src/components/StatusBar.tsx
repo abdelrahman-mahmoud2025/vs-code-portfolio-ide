@@ -45,6 +45,9 @@ const StatusBar: React.FC<StatusBarProps> = ({ activeTab, fileContents }) => {
       </div>
 
       <div className="flex items-center gap-1 h-full">
+        <div className="hover:bg-black/10 px-3 h-full hidden lg:flex items-center cursor-pointer transition-colors rounded-sm">
+          Press / or Ctrl/Cmd+K
+        </div>
         <div className="hover:bg-black/10 px-3 h-full hidden md:flex items-center cursor-pointer transition-colors rounded-sm">
           Ln {lineCount}, Col 1
         </div>

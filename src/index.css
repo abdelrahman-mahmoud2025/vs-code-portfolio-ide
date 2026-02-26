@@ -13,3 +13,48 @@
   --font-family-display: Inter, sans-serif;
   --font-family-mono: "Fira Code", monospace;
 }
+
+:root,
+[data-theme="one-dark-pro"] {
+  --color-primary: #62a6f8;
+  --color-background-light: #f5f7f8;
+  --color-background-dark: #050505;
+  --color-editor-bg: #0f131a;
+  --color-sidebar-bg: #111418;
+  --color-activity-bg: #0d1014;
+  --color-border-color: #2b323b;
+  --color-terminal-bg: #0d1117;
+}
+
+[data-theme="github-dark"] {
+  --color-primary: #58a6ff;
+  --color-background-light: #f6f8fa;
+  --color-background-dark: #0d1117;
+  --color-editor-bg: #161b22;
+  --color-sidebar-bg: #0d1117;
+  --color-activity-bg: #010409;
+  --color-border-color: #30363d;
+  --color-terminal-bg: #0d1117;
+}
+
+[data-theme="solarized-dark"] {
+  --color-primary: #2aa198;
+  --color-background-light: #fdf6e3;
+  --color-background-dark: #002b36;
+  --color-editor-bg: #073642;
+  --color-sidebar-bg: #002b36;
+  --color-activity-bg: #001f27;
+  --color-border-color: #0f4a56;
+  --color-terminal-bg: #00212b;
+}
+
+[data-theme="dracula"] {
+  --color-primary: #bd93f9;
+  --color-background-light: #f8f8f2;
+  --color-background-dark: #282a36;
+  --color-editor-bg: #282a36;
+  --color-sidebar-bg: #21222c;
+  --color-activity-bg: #191a21;
+  --color-border-color: #44475a;
+  --color-terminal-bg: #21222c;
+}

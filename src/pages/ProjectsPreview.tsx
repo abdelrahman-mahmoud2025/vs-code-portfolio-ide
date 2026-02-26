@@ -27,6 +27,7 @@ const ProjectsPreview: React.FC<{ content: string }> = ({ content }) => {
               <img
                 src={project.image}
                 alt={project.title}
+                loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#10141b] via-transparent to-transparent opacity-60"></div>
@@ -78,17 +79,31 @@ const ProjectsPreview: React.FC<{ content: string }> = ({ content }) => {
                   </span>
                   Live Demo
                 </a>
-                <a
-                  href={project.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-white hover:bg-white/10 transition-all active:scale-95"
-                >
-                  <span className="material-symbols-outlined text-sm">
-                    terminal
-                  </span>
-                  Source
-                </a>
+                {project.sourceUrl && project.sourceUrl !== "#" ? (
+                  <a
+                    href={project.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-white hover:bg-white/10 transition-all active:scale-95"
+                  >
+                    <span className="material-symbols-outlined text-sm">
+                      terminal
+                    </span>
+                    Source
+                  </a>
+                ) : (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-white/5 border border-white/10 py-2.5 text-xs font-bold text-white hover:bg-white/10 transition-all active:scale-95"
+                  >
+                    <span className="material-symbols-outlined text-sm">
+                      article
+                    </span>
+                    Case Study
+                  </a>
+                )}
               </div>
             </div>
           </div>

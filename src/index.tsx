@@ -12,3 +12,36 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async () => {
+    if (!import.meta.env.PROD) return;
+
+    try {
+      const registration = await navigator.serviceWorker.register("/sw.js");
+
+      if (registration.waiting) {
+        registration.waiting.postMessage({ type: "SKIP_WAITING" });
+      }
+
+      registration.addEventListener("updatefound", () => {
+        const installing = registration.installing;
+        if (!installing) return;
+        installing.addEventListener("statechange", () => {
+          if (
+            installing.state === "installed" &&
+            navigator.serviceWorker.controller
+          ) {
+            installing.postMessage({ type: "SKIP_WAITING" });
+          }
+        });
+      });
+
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        window.location.reload();
+      });
+    } catch {
+      // Silent fail to avoid blocking the app
+    }
+  });
+}

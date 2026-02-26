@@ -40,6 +40,7 @@ export interface Project {
   image: string;
   liveUrl: string;
   sourceUrl: string;
+  featured?: boolean;
 }
 
 export interface Experience {
@@ -79,4 +80,10 @@ export interface Education {
   institution: string;
   period: string;
   description: string;
+}
+
+export interface ImpactStat {
+  label: string;
+  value: string;
+  hint?: string;
 }
