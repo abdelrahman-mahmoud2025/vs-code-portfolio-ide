@@ -5,7 +5,6 @@ const CORE_FILES = [
   "/",
   "/index.html",
   "/manifest.webmanifest",
-  "/pwa-icon.svg",
   "/icons/icon-192x192.webp",
   "/icons/icon-512x512.webp",
 ];
